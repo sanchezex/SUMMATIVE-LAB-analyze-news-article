@@ -211,51 +211,72 @@ def main():
     print("1. COUNT SPECIFIC WORD")
     print("-" * 40)
     test_words = ["Apple", "pie", "ACME", "technology", "baking", "zxyz"]
-    for word in test_words:
+    index = 0
+    while index < len(test_words):
+        word = test_words[index]
         count = count_specific_word(NEWS_ARTICLE, word)
         print(f"   Count of '{word}': {count}")
+        index = index + 1
     print()
     
     # Test identify_most_common_word
     print("2. MOST COMMON WORD")
     print("-" * 40)
     most_common = identify_most_common_word(NEWS_ARTICLE)
-    print(f"   Most common word: '{most_common}'")
+    if most_common is not None:
+        print(f"   Most common word: '{most_common}'")
+    else:
+        print("   No words found in text")
     print()
     
     # Test identify_most_common_word with empty string
     most_common_empty = identify_most_common_word("")
-    print(f"   Most common word (empty string): {most_common_empty}")
+    if most_common_empty is None:
+        print(f"   Most common word (empty string): {most_common_empty}")
+    else:
+        print(f"   Unexpected result for empty string")
     print()
     
     # Test calculate_average_word_length
     print("3. AVERAGE WORD LENGTH")
     print("-" * 40)
     avg_length = calculate_average_word_length(NEWS_ARTICLE)
-    print(f"   Average word length: {avg_length:.2f}")
+    if avg_length > 0:
+        print(f"   Average word length: {avg_length:.2f}")
+    else:
+        print("   No words found in text")
     
     avg_length_empty = calculate_average_word_length("")
-    print(f"   Average word length (empty string): {avg_length_empty}")
+    if avg_length_empty == 0:
+        print(f"   Average word length (empty string): {avg_length_empty}")
     print()
     
     # Test count_paragraphs
     print("4. COUNT PARAGRAPHS")
     print("-" * 40)
     num_paragraphs = count_paragraphs(NEWS_ARTICLE)
-    print(f"   Number of paragraphs: {num_paragraphs}")
+    if num_paragraphs > 0:
+        print(f"   Number of paragraphs: {num_paragraphs}")
+    else:
+        print("   No paragraphs found")
     
     num_paragraphs_empty = count_paragraphs("")
-    print(f"   Number of paragraphs (empty string): {num_paragraphs_empty}")
+    if num_paragraphs_empty == 1:
+        print(f"   Number of paragraphs (empty string): {num_paragraphs_empty}")
     print()
     
     # Test count_sentences
     print("5. COUNT SENTENCES")
     print("-" * 40)
     num_sentences = count_sentences(NEWS_ARTICLE)
-    print(f"   Number of sentences: {num_sentences}")
+    if num_sentences > 0:
+        print(f"   Number of sentences: {num_sentences}")
+    else:
+        print("   No sentences found")
     
     num_sentences_empty = count_sentences("")
-    print(f"   Number of sentences (empty string): {num_sentences_empty}")
+    if num_sentences_empty == 1:
+        print(f"   Number of sentences (empty string): {num_sentences_empty}")
     print()
     
     # Summary
